@@ -1,6 +1,6 @@
-package com.jtool.validate;
+package com.jtool.validator;
 
-import static com.jtool.validate.ConditionsValidator.when;
+import static com.jtool.validator.ConditionsValidator.when;
 
 import java.util.Optional;
 

@@ -1,4 +1,4 @@
-package com.jtool.validate;
+package com.jtool.validator;
 
 import java.util.Set;
 

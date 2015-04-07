@@ -1,4 +1,4 @@
-package com.jtool.validate;
+package com.jtool.validator;
 
 import static org.junit.Assert.assertTrue;
 
@@ -6,6 +6,8 @@ import java.util.Date;
 
 import org.apache.commons.lang3.time.DateUtils;
 import org.junit.Test;
+
+import com.jtool.validator.ParamBeanValidator;
 
 public class ValidatorTest {
 
