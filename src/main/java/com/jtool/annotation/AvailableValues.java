@@ -17,7 +17,7 @@ import java.lang.annotation.Target;
 @Constraint(validatedBy = AvailableValuesValidator.class)
 public @interface AvailableValues {
 
-    String message() default "{.not message}";
+    String message() default "{.not available　values}";
 
     String[] values() default {};
 
