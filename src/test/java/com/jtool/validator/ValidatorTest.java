@@ -94,6 +94,14 @@ public class ValidatorTest {
 		assertTrue(ParamBeanValidator.isNotValid(account));
 	}
 
+	@Test
+	public void testAgeMaxValueByResultObject() {
+		Account account = makeAccount();
+		account.setAge(110);
+		ValidationResult validationResult = ParamBeanValidator.valid(account);
+		assertTrue(validationResult.isValid());
+	}
+
 	private Account makeAccount() {
 		Account account = new Account();
 		account.setUsername("jiale.chan");
