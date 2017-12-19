@@ -1,5 +1,6 @@
 package com.jtool.validator;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Date;
@@ -102,6 +103,14 @@ public class ValidatorTest {
 		assertTrue(validationResult.isValid());
 	}
 
+	@Test
+	public void testType() {
+		Account account = makeAccount();
+		account.setType("NotRightType");
+		ValidationResult validationResult = ParamBeanValidator.valid(account);
+		assertFalse(validationResult.isValid());
+	}
+
 	private Account makeAccount() {
 		Account account = new Account();
 		account.setUsername("jiale.chan");
@@ -109,6 +118,8 @@ public class ValidatorTest {
 		account.setBirthday(new Date(System.currentTimeMillis() - 10000));
 		account.setAge(10);
 		account.setEmail("jiale.chan@gmail.com");
+		account.setType("A");
+		account.setInfo("B");
 		return account;
 	}
 }

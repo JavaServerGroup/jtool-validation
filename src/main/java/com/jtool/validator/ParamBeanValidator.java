@@ -15,12 +15,16 @@ import org.slf4j.LoggerFactory;
 public class ParamBeanValidator {
 
 	private static Logger logger = LoggerFactory.getLogger(ParamBeanValidator.class);
-	private static ValidatorFactory vf = Validation.buildDefaultValidatorFactory();;
+	private static ValidatorFactory vf = Validation.buildDefaultValidatorFactory();
 
-	public static boolean isValid(Object bean) {
+	public static Validator getValidator() {
+		return vf.getValidator();
+	}
+
+	public static boolean isValid(Object bean, Class... classes) {
 
 		Validator validator = vf.getValidator();
-		Set<ConstraintViolation<Object>> constraintViolationResult = validator.validate(bean);
+		Set<ConstraintViolation<Object>> constraintViolationResult = validator.validate(bean, classes);
 		if (constraintViolationResult.isEmpty()) {
 			return true;
 		} else {
@@ -31,16 +35,16 @@ public class ParamBeanValidator {
 		}
 	}
 
-	public static boolean isNotValid(Object bean) {
-		return !isValid(bean);
+	public static boolean isNotValid(Object bean, Class... classes) {
+		return !isValid(bean, classes);
 	}
 
-	public static ValidationResult valid(Object bean) {
+	public static ValidationResult valid(Object bean, Class... classes) {
 
 		ValidationResult result = new ValidationResult();
 
 		Validator validator = vf.getValidator();
-		Set<ConstraintViolation<Object>> constraintViolationResult = validator.validate(bean);
+		Set<ConstraintViolation<Object>> constraintViolationResult = validator.validate(bean, classes);
 		if (constraintViolationResult.isEmpty()) {
 			result.setValid(true);
 		} else {
