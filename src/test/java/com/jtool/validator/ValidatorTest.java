@@ -103,14 +103,6 @@ public class ValidatorTest {
 		assertTrue(validationResult.isValid());
 	}
 
-	@Test
-	public void testType() {
-		Account account = makeAccount();
-		account.setType("NotRightType");
-		ValidationResult validationResult = ParamBeanValidator.valid(account);
-		assertFalse(validationResult.isValid());
-	}
-
 	private Account makeAccount() {
 		Account account = new Account();
 		account.setUsername("jiale.chan");
